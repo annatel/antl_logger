@@ -13,7 +13,7 @@ defmodule AntlLogger.Formatter do
     |> Map.new(fn
       {:erl_level, _value} -> {:level, level}
       {:domain, value} -> {:domain, Enum.at(value, 0)}
-      {:application, _value} -> {:application, Application.get_application(__MODULE__)}
+      {:application, _value} -> {:application, application_name()}
       {key, value} -> {key, "#{inspect(value)}"}
     end)
     |> Map.merge(%{
@@ -39,4 +39,6 @@ defmodule AntlLogger.Formatter do
   end
 
   defp errors_on(_), do: nil
+
+  defp application_name(), do: Application.get_env(:antl_logger, :application_name)
 end
