@@ -21,6 +21,7 @@ defmodule AntlLogger.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:jason, "~> 1.3"},
       {:plug_logger_json, "~> 0.7.0"},
       {:logger_file_backend, "~> 0.0.10"}
     ]

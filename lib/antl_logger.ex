@@ -13,7 +13,7 @@ defmodule AntlLogger.Formatter do
     |> Map.new(fn
       {:erl_level, _value} -> {:level, level}
       {:domain, value} -> {:domain, Enum.at(value, 0)}
-      {:application, _value} -> {:application, Application.get_application(RabbitMQGateway)}
+      {:application, _value} -> {:application, Application.get_application(__MODULE__)}
       {key, value} -> {key, "#{inspect(value)}"}
     end)
     |> Map.merge(%{
